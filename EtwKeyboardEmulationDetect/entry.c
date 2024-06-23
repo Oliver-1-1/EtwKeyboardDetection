@@ -9,7 +9,7 @@ BOOL active = FALSE;
 
 VOID
 EtwCallback(
-	__in PEVENT_RECORD event
+	__in PEVENT_RECORD Event
 )
 {
 	DWORD size;
@@ -17,7 +17,7 @@ EtwCallback(
 	PWCHAR provider;
 	EVENT_PROPERTY_INFO property;
 
-	trace = GetEventData(event, &size);
+	trace = GetEventData(Event, &size);
 
 	provider = (PCHAR)trace + trace->ProviderNameOffset;
 
@@ -45,7 +45,7 @@ EtwCallback(
 
 					LPCWSTR string = GetPropertyData(
 						trace,
-						event,
+						Event,
 						property,
 						20); // index for fid_URB_TransferBufferLength
 
@@ -74,9 +74,9 @@ EtwCallback(
 
 LRESULT
 Win32Callback(
-	_In_ INT    Code,
-	_In_ WPARAM WParam,
-	_In_ LPARAM LParam
+	__in INT    Code,
+	__in WPARAM WParam,
+	__in LPARAM LParam
 )
 {
 	KBDLLHOOKSTRUCT* key = (KBDLLHOOKSTRUCT*)LParam;

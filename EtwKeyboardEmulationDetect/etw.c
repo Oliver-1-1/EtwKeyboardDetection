@@ -179,7 +179,7 @@ GetEventData(
 {
 	ULONG status;
 	ULONG size = 0;
-	PCHAR buffer;
+	PCHAR buffer = NULL;
 
 	if (Event == NULL)
 	{
