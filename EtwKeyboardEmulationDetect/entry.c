@@ -16,6 +16,7 @@ EtwCallback(
 	PTRACE_EVENT_INFO trace;
 	PWCHAR provider;
 	EVENT_PROPERTY_INFO property;
+	EVENT_PROPERTY_INFO iProperty;
 
 	trace = GetEventData(Event, &size);
 
@@ -34,9 +35,9 @@ EtwCallback(
 				propertyIndex < property.structType.StructStartIndex + property.structType.NumOfStructMembers;
 				propertyIndex = propertyIndex + 1)
 			{
-				property = trace->EventPropertyInfoArray[propertyIndex];
+				iProperty = trace->EventPropertyInfoArray[propertyIndex];
 
-				if (!wcscmp(L"fid_URB_TransferBufferLength", (PCHAR)trace + property.NameOffset))
+				if (!wcscmp(L"fid_URB_TransferBufferLength", (PCHAR)trace + iProperty.NameOffset))
 				{
 
 					//
@@ -46,7 +47,7 @@ EtwCallback(
 					LPCWSTR string = GetPropertyData(
 						trace,
 						Event,
-						property,
+						iProperty,
 						20); // index for fid_URB_TransferBufferLength
 
 					if (string == NULL)
