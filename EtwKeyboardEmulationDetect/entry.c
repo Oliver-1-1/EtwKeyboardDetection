@@ -58,8 +58,7 @@ EtwCallback(
 					//
 					// Filter out for only keyboard packets by size
 					//
-
-					if (!wcscmp(string, L"0xC"))
+					if (!wcscmp(string, L"0x8") || !wcscmp(string, L"0xC"))
 					{
 						etwCount = etwCount + 1;
 					}
