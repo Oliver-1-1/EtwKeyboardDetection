@@ -10,3 +10,5 @@ This POC is created very quickly and that's why it requires some manual work.
 Never touch the mouse during the testing. Preferably unplug it.
 1. Open the program and press F1 to start the keyboard monitoring.
 2. Press a few buttons on the keyboard and then press F1 again to stop the monitoring and wait to see if it was simulated or not.
+
+3. https://github.com/Oliver-1-1/EtwKeyboardDetection
